@@ -1,0 +1,289 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+    <link href="~/Assert/css/StyleSheet2.css" rel="stylesheet" />
+    <link href="~/Assert/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="~/Assert/bootstrap/js/jquery-3.3.1.min.js"></script>
+    <script src="~/Assert/bootstrap/js/bootstrap.min.js"></script>
+
+</head>
+<body>
+    <div class="container-fluid border bg">
+        <div class="row">
+            <div class="col-6"></div>
+            <div class="col-6 ">
+                <ul class="nav">
+                    <li class="nav-item">
+                        <a class="nav-link n-l" href="#">Trang chủ</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link n-l" href="#">Hướng dẫn</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link n-l" href="#">Tư vấn</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link n-l" href="@Url.Action("Danhsach_PT","Trangchu")">Giới thiệu</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link n-l" href="#">Liên hệ</a>
+                    </li>
+                    <li class="nav-item" title="Danh sách sản phẩm đã chọn">
+                        <a class="nav-link n-l" href="@Url.Action("Index","Cart")"><i class="fa fa-list-alt" aria-hidden="true"></i></a>
+                    </li>
+                    <li class="nav-item" title="Danh sách sản phẩm của bạn">
+                        <a class="nav-link n-l1" href="@Url.Action("HienthiDanhsachyeuthich","Cart")"><i class="fa fa-check-square-o" aria-hidden="true"></i></a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    @*----------------------------------------------------------*@
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-2">
+               <a href="@Url.Action("Index","Trangchu")"><img class="ima" style="cursor:pointer" src="~/Assert/Hinh_Anh_PTX_DA/logo-removebg-preview.png" /></a> 
+            </div>
+
+            <div class="col-6 container">
+                @Html.Action("Search_box", "Trangchu")
+                <div class="hastag">
+                    <p>Tìm kiếm nhiều nhất:</p>
+                    <ul>
+                        <li>
+                            <a href="#">Phuộc YSS</a>
+                        </li>
+                        <li><a href="#">Bugi SovkoS</a></li>
+                        <li><a href="#">xịt sên GoRacing</a></li>
+                        <li><a href="#">phuộc racingboy </a></li>
+                        <li><a href="#">Led 2 tầng</a></li>
+
+                    </ul>
+                </div>
+
+
+            </div>
+
+        </div>
+    </div>
+    @*----------------------------------------------------------*@
+    <div id="content" class="row">
+        <div class="col-2"></div>
+        <div id="c2" class="col-2">
+            <div class="menu-text">
+                <h2><i class="fa fa-bars"></i>Danh sách sản phẩm</h2>
+            </div>
+
+            <ul class="list-group">
+                <li class="list-group-item">
+                    <img class="img-menu" src="~/Assert/Hinh_Anh_PTX_DA/xe1.png" />
+                    <div class="link">
+                        <a href="@Url.Action("DOchoiXemay","Sanpham")"><p5>Đồ chơi xe máy</p5></a>
+                        <div>
+                            <a href="#" class="link-child"><p6>Kính hậu</p6></a>
+                            <a href="#" class="link-child"><p6>,Bao tay</p6></a>
+                            <a href="#" class="link-child"><p6>,Tay thắng</p6></a>
+                            <a href="#" class="link-child"><p6>,Đèn</p6></a>
+                        </div>
+
+                    </div>
+
+                </li>
+                <li class="list-group-item">
+                    <img class="img-menu" src="~/Assert/Hinh_Anh_PTX_DA/xe2.png" />
+                    <div class="link">
+                        <a href="@Url.Action("Phutungthaythe","Sanpham")"><p5>Phụ tùng thay thế</p5></a>
+                        <div>
+                            <a href="#" class="link-child"><p6>NSD</p6></a>
+                            <a href="#" class="link-child"><p6>,Phuộc</p6></a>
+                            <a href="#" class="link-child"><p6>,Bugi</p6></a>
+                            <a href="#" class="link-child"><p6>,Pô</p6></a>
+                            <a href="#" class="link-child"><p6>,Mâm</p6></a>
+                            <a href="#" class="link-child"><p6>,Lọc gió</p6></a>
+                        </div>
+                    </div>
+
+                </li>
+                <li class="list-group-item">
+                    <img class="img-menu" src="~/Assert/Hinh_Anh_PTX_DA/x3.png" />
+                    <div class="link">
+                        <a href="@Url.Action("VoXemay","Sanpham")"><p5>Vỏ xe máy(Lốp xe)</p5></a>
+                        <div>
+                            <a href="#" class="link-child"><p6>Michelin</p6></a>
+                            <a href="#" class="link-child"><p6>,Dunlop</p6></a>
+                            <a href="#" class="link-child"><p6>,Maxxis </p6></a>
+                            <a href="#" class="link-child"><p6>,Pirelli</p6></a>
+                        </div>
+
+                    </div>
+                </li>
+                <li class="list-group-item">
+                    <img class="img-menu" src="~/Assert/Hinh_Anh_PTX_DA/x4.png" />
+                    <div class="link">
+                        <a href="@Url.Action("NhotXemay","Sanpham")"><p5>Nhớt xe máy</p5></a>
+                        <div>
+                            <a href="#" class="link-child"><p6>Motul</p6></a>
+                            <a href="#" class="link-child"><p6>,Shell</p6></a>
+                            <a href="#" class="link-child"><p6>,Liqui Moly</p6></a>
+                            <a href="#" class="link-child"><p6>,Repsol</p6></a>
+                        </div>
+
+                    </div>
+
+                </li>
+                <li class="list-group-item">
+                    <img class="img-menu" src="~/Assert/Hinh_Anh_PTX_DA/x5.png" />
+                    <div class="link">
+                        <a href="@Url.Action("PhuKien","Sanpham")"><p5>Phụ kiện cho biker</p5></a>
+                        <div>
+                            <a href="#" class="link-child"><p6>Nón bảo hiểm</p6></a>
+                            <a href="#" class="link-child"><p6>,Đồ phượt</p6></a>
+                        </div>
+                    </div>
+                </li>
+                <li class="list-group-item">
+                    <img class="img-menu" src="~/Assert/Hinh_Anh_PTX_DA/x6.png" />
+                    <div class="link">
+                        <a href="@Url.Action("DoKieng","Sanpham")"><p5>Đồ kiểng theo xe</p5></a>
+                        <div>
+                            <a href="#" class="link-child"><p6>Honda</p6></a>
+                            <a href="#" class="link-child"><p6>,Yamaha</p6></a>
+                            <a href="#" class="link-child"><p6>,Suzuki</p6></a>
+                            <a href="#" class="link-child"><p6>,Piaggio</p6></a>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+
+        </div>
+        <div id="c4" class="col-4">
+            @RenderBody()
+        </div>
+        <div id="c3" class="col-3">
+            <div class="location" style="padding-top: 2.5px;">
+                <h2>PHỤ TÙNG & ĐỒ CHƠI XE MÁY</h2>
+                <h3>Giờ làm việc: Từ 8g00 - 18g00 (Cả Thứ 7 & CN)</h3>
+            </div>
+
+            <ul class="locat-ul">
+                <li class="locat-li">
+                    <span><i class="bi bi-geo-alt-fill"></i></span>
+                    <p><h6>Hóc Môn: </h6> 36/6 Phan Văn Hớn, Bà Điểm, HCM</p>
+                </li>
+                <li class="locat-li">
+                    <span><i class="bi bi-geo-alt-fill"></i></span>
+                    <p> <h6>Q.Bình Tân: </h6> 621 Tỉnh Lộ 10, HCM</p>
+                </li>
+                <li class="locat-li">
+                    <span><i class="bi bi-geo-alt-fill"></i></span>
+                    <p><h6>TP.Biên Hòa: </h6> 313 Đồng Khởi, P.Tân Mai</p>
+                </li>
+                <li class="locat-li">
+                    <span><i class="bi bi-geo-alt-fill"></i></span>
+                    <p> <h6>Q.Thủ Đức: </h6> 1007 Kha Vạn Cân, P.Linh Tây, HCM</p>
+                </li>
+                <li class="locat-li">
+                    <span><i class="bi bi-geo-alt-fill"></i></span>
+                    <p> <h6>Q.Tân Bình: </h6> 457 Hoàng Văn Thụ, P.4, HCM</p>
+                </li>
+                <li class="locat-li"><p class="hotline">Hotline: 0971343530 - 0934090714</p></li>
+            </ul>
+
+            <p style="margin:0;border-bottom:5px solid #ff6a00; width:50%;text-transform:uppercase">Quan tâm nhiều</p>
+            @Html.Action("Danhsach_PT")
+
+        </div>
+
+        <div class="col-1"></div>
+    </div>
+
+    @*----------------------------------------------------------*@
+
+    <div style="position: relative; bottom: 1025px;width: 780px; left: 269px;">
+        @Html.Action("Danhsach_Conten_PT")
+    </div>
+
+    @*----------------------------------------------------------*@
+    <div style="position: relative; bottom: 1018px;width: 780px; left: 269px;">
+        @Html.Action("Danhsach_Conten_PT1")
+    </div>
+    @*----------------------------------------------------------*@
+    <div style="position: relative; bottom: 1011px;width: 780px; left: 269px;">
+        @Html.Action("Danhsach_Conten_PT2")
+    </div>
+    @*----------------------------------------------------------*@
+    <div style="position: relative; bottom: 1004px;width: 780px; left: 269px;margin-bottom: -1000px;">
+        @Html.Action("Danhsach_Conten_PT3")
+    </div>
+
+    <div class="row">
+        <div class="col-md-2"></div>
+        <div class="col-md-2">
+            <h4  style="margin:0; background:#e66c05;color:#fff;text-align:center">VIDEO</h4>
+            <div style=" width: 806px; height: 456px;border:3px solid;margin-bottom:10px;"><video src="~/Assert/Hinh_Anh_PTX_DA/V4 Granturismo_ Technological Beauty.mp4" style=" width: 800px; height: 450px;" muted="muted" autoplay="autoplay" loop="loop"></video></div>
+        </div>
+    </div>
+    @*----------------------------------------------------------*@
+<div class="row" style="margin-top: 32px; background: #e2dbdb;">
+    <div class="col-md-3">
+        <h4 class="title"></h4>
+    </div>
+    <div class="col-md-3" >
+        <h4 class="title">Hỗ trợ khách hàng</h4>
+        <ul class="footer">
+            <li class="footer-item">Hướng dẫn mua hàng</li>
+            <li class="footer-item">Phương thức vận chuyển</li>
+            <li class="footer-item">Phương thức thanh toán</li>
+            <li class="footer-item">Chính sách bảo mật</li>
+            <li class="footer-item">Điều khoản sử dụng</li>
+            <li class="footer-item">Chính sách bảo hành</li>
+        </ul>
+    </div>
+    <div class="col-md-3" >
+        <h4 class="title" >Giới thiệu</h4>
+        <ul class="footer" >
+            <li class="footer-item">Hợp tác - Góp ý: 0938.82.02.02 </li>
+            <li class="footer-item">Phụ kiện giá rẻ</li>
+            <li class="footer-item">Đồ chơi xe máy mới nhất</li>
+            <li class="footer-item">Đồ chơi xe Vision</li>
+            <li class="footer-item">Đồ chơi Vario</li>
+            <li class="footer-item">Đồ chơi xe Click Thái</li>
+            <li class="footer-item">Đồ chơi xe SH Mode</li>
+            <li class="footer-item">Vỏ xe Exciter</li>
+            <li class="footer-item">Vỏ xe Winner</li>
+        </ul>
+    </div>
+    <div class="col-md-3">
+        <h4 class="title">Sản phẩm nổi bật</h4>
+        <ul class="footer">
+            <li  class="footer-item">Đồ chơi Exciter 155</li>
+            <li class="footer-item">Đồ chơi Exciter 150</li>
+            <li class="footer-item">Đồ chơi xe SH</li>
+            <li class="footer-item">Đồ chơi xe NVX</li>
+            <li class="footer-item">Đồ chơi Air Blade</li>
+            <li class="footer-item">Đồ chơi Winner X</li>
+            <li class="footer-item">Đồ chơi xe Sirius</li>
+            <li class="footer-item">Phụ tùng xe máy Honda</li>
+            <li class="footer-item">Phụ tùng xe máy Yamaha</li>
+            <li class="footer-item">Phụ tùng xe máy Suzuki</li>
+            <li class="footer-item">Phụ tùng xe máy Piaggio</li>        
+        </ul>
+    </div>
+</div>
+    @*----------------------------------------------------------*@
+    <div style="height: 38px; background: #585555;">
+        <p style=" padding-top: 8px; color: white; font-size: 13px; margin-left: 268px;">Design by PPANND Store </p>
+    </div>
+
+
+</body>
+</html>

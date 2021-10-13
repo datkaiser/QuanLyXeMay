@@ -1,0 +1,34 @@
+﻿@using Quanli_CuaHang_PTxemay.Models;
+@model List<CTHD>
+@{
+    ViewBag.Title = "ChitietDonHang";
+    Layout = "~/Views/Shared/_LayoutPage4.cshtml";
+}
+<table class="table">
+    <thead>
+        <tr>
+            <td style="font-weight:700">Mã HD</td>
+            <td style="font-weight:700">Tên Sản phẩm</td>
+            <td style="font-weight:700">Hình ảnh</td>
+            <td style="width: 117px;font-weight:700">Số lượng</td>
+            <td style="font-weight:700">Đơn giả</td>
+            <td style="font-weight:700">Thành tiền</td>
+            <td style="font-weight:700"></td>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.MAHD</td>
+                <td>@item.PHUTUNGXE.TENPT</td>
+                <td><img width="100" src="~/Assert/Hinh_Anh_PTX_DA/@item.PHUTUNGXE.HINH" /></td>
+                <td><input type="text" class="txtquantity" data-id="@item.PHUTUNGXE.MAPT" value="@item.SOLUONG" /></td>
+                <td>@String.Format("{0:#,##}", Convert.ToInt32(item.PHUTUNGXE.GIABAN.GetValueOrDefault(0)))đ</td>
+                <td>@String.Format("{0:#,##}", Convert.ToInt32(((item.PHUTUNGXE.GIABAN.GetValueOrDefault(0) * item.SOLUONG))))đ</td>
+            </tr>
+        }       
+    </tbody>
+</table>
+
+

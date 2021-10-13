@@ -1,0 +1,58 @@
+﻿@using Quanli_CuaHang_PTxemay.Models;
+@model List<PHUTUNGXE>
+
+@helper Truncate(string input, int length)
+{
+    if (input.Length < length)
+    {
+        @input;
+    }
+    else
+    {
+        @input.Substring(0, length) <text>...</text>
+    }
+}
+<style>
+    .card-title {
+        font-size: 16px;
+    }
+
+    .card {
+        margin-bottom: 5px;
+    }
+
+    h5 {
+        margin: 0;
+        border-bottom: 5px solid #ff6a00;
+        width: 50%;
+    }
+</style>
+
+<link href="~/Assert/css/StyleSheet2.css" rel="stylesheet" />
+<link href="~/Assert/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
+<link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+<h5>NHỚT XE MÁY</h5>
+<div class="row">
+    @foreach (PHUTUNGXE i in Model)
+    {
+
+        <div class="col-md-4" style="cursor:pointer" title="@i.TENPT">
+            <div class="card">
+                <img id="img-content" class="card-img-top" src="~/Assert/Hinh_Anh_PTX_DA/@i.HINH" alt="Card image">
+                <div class="card-body">
+                    <h4 class="card-title">@Truncate(i.TENPT, 10)</h4>
+                    <p class="card-text">@String.Format("{0:#,##}", Convert.ToInt32(i.GIABAN))<label style="color:red;margin-left:3px;">đ</label></p>
+                    <a href="@Url.Action("ChitietSp","Sanpham", new {masp = i.MAPT})" class="btn btn-primary">Xem chi tiết</a>
+                </div>
+            </div>
+        </div>
+
+
+
+    }
+</div>
+

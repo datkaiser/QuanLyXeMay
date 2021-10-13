@@ -1,0 +1,68 @@
+﻿
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link href="~/Assert/css/StyleSheet1.css" rel="stylesheet" />
+
+<div class="topnav" id="myTopnav"   style="height:38px" >
+    <div class="dropdown1" style=" margin-top: -7px;">
+        <button class="dropbtn">
+            <i class="fa fa-bars"></i>
+            Danh sách sản phẩm
+
+        </button>
+        <div class="dropdown-content" style=" margin-top: -7px;">
+            <ul class="list-group" style="width: 224px;">
+                <li class="list-group-item">
+                    <img class="img-menu" src="~/Assert/Hinh_Anh_PTX_DA/xe1.png" />
+                    <div class="link">
+                        <a href="@Url.Action("DOchoiXemay","Sanpham")"><p5>Đồ chơi xe máy</p5></a>
+                    </div>
+                </li>
+                <li class="list-group-item">
+                    <img class="img-menu" src="~/Assert/Hinh_Anh_PTX_DA/xe2.png" />
+                    <div class="link">
+                        <a href="@Url.Action("Phutungthaythe","Sanpham")"><p5>Phụ tùng thay thế</p5></a>
+                    </div>
+
+                </li>
+                <li class="list-group-item">
+                    <img class="img-menu" src="~/Assert/Hinh_Anh_PTX_DA/x3.png" />
+                    <div class="link">
+                        <a href="@Url.Action("VoXemay","Sanpham")"><p5>Vỏ xe máy(Lốp xe)</p5></a>
+                    </div>
+                </li>
+                <li class="list-group-item">
+                    <img class="img-menu" src="~/Assert/Hinh_Anh_PTX_DA/x4.png" />
+                    <div class="link">
+                        <a href="@Url.Action("NhotXemay","Sanpham")"><p5>Nhớt xe máy</p5></a>
+                    </div>
+
+                </li>
+                <li class="list-group-item">
+                    <img class="img-menu" src="~/Assert/Hinh_Anh_PTX_DA/x5.png" />
+                    <div class="link">
+                        <a href="@Url.Action("PhuKien","Sanpham")"><p5>Phụ kiện cho biker</p5></a>
+                    </div>
+                </li>
+                <li class="list-group-item">
+                    <img class="img-menu" src="~/Assert/Hinh_Anh_PTX_DA/x6.png" />
+                    <div class="link">
+                        <a href="@Url.Action("DoKieng","Sanpham")"><p5>Đồ kiểng theo xe</p5></a>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <a href="javascript:void(0);" style="font-size:15px;" class="icon" onclick="myFunction()">&#9776;</a>
+</div>
+<script>
+    function myFunction() {
+        var x = document.getElementById("myTopnav");
+        if (x.className === "topnav") {
+            x.className += " responsive";
+        } else {
+            x.className = "topnav";
+        }
+    }
+</script>
+
+

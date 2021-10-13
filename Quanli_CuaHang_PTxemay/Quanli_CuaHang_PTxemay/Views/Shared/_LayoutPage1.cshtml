@@ -1,0 +1,41 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+    <link href="~/Assert/css/style.css" rel="stylesheet" />
+
+</head>
+<body>
+    <section class="showcase">
+        <header>
+            <h2 class="logo"><img src="~/Assert/Hinh_Anh_PTX_DA/logo-removebg-preview.png" /></h2>
+            <div class="toggle"></div>
+        </header>
+        <div>
+            @RenderBody()
+        </div>
+        <div class="overlay"></div>
+    </section>
+    <div class="menu">
+        <ul>
+            <li><a href="@Url.Action("Index","TrangChu")">Trang chủ</a> </li>
+            <li><a href="#">Sản Phẩm Mới</a></li>
+            <li><a href="#">Hướng Dẫn</a></li>
+            <li><a href="#">Tư Vấn </a></li>
+            <li><a href="#">Giới Thiệu</a></li>
+            <li><a href="#">Liên Hệ</a></li>
+            
+        </ul>
+    </div>
+    <script>
+        const mnuToggle = document.querySelector('.toggle')
+        const showcase = document.querySelector('.showcase')
+        mnuToggle.addEventListener('click', () => {
+            mnuToggle.classList.toggle('active')
+            showcase.classList.toggle('active')
+        })
+    </script>
+</body>
+</html>

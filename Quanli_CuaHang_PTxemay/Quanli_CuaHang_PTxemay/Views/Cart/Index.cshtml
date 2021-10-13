@@ -1,0 +1,149 @@
+﻿@using Quanli_CuaHang_PTxemay.Models;
+@model List<CartItem>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_LayoutPage4.cshtml";
+}
+
+@if (Model.Count > 0)
+{
+    <h5 style="width:40%;border-bottom:5px solid;color:orange;margin-top:10px;">Danh sách sản phẩm mà bạn đã chọn:</h5>
+    <table class="table">
+        <thead>
+            <tr>
+                <td style="font-weight:700">Mã</td>
+                <td style="font-weight:700">Tên Sản phẩm</td>
+                <td style="font-weight:700">Hình ảnh</td>
+                <td style="width: 117px;font-weight:700">Số lượng</td>
+                <td style="font-weight:700">Đơn giả</td>
+                <td style="font-weight:700">Thành tiền</td>
+                <td style="font-weight:700"></td>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>@item.ProductID.MAPT</td>
+                    <td>@item.ProductID.TENPT</td>
+                    <td><img width="100" src="~/Assert/Hinh_Anh_PTX_DA/@item.ProductID.HINH" /></td>
+                    <td><input type="text" class="txtquantity" data-id="@item.ProductID.MAPT" value="@item.Quantity" /></td>
+                    <td>@String.Format("{0:#,##}", Convert.ToInt32(item.ProductID.GIABAN.GetValueOrDefault(0)))đ</td>
+                    <td>@String.Format("{0:#,##}", Convert.ToInt32(((item.ProductID.GIABAN.GetValueOrDefault(0) * item.Quantity))))đ</td>
+                    <td><span><a href="#" data-id="@item.ProductID.MAPT" class="btn-delete"><i style="color:red;" class="fa fa-trash" aria-hidden="true"></i></a></span></td>
+                </tr>
+            }
+        <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td><h6 style=" font-size: 16px; margin-top: 4px;color:red">TỔNG TIỀN:</h6></td>
+            <td> <p style="color:orangered;font-size:20px;font-weight:700">@String.Format("{0:#,##}", Convert.ToInt32(ViewBag.tt))đ</p></td>
+        </tr>
+        </tbody>
+    </table>
+    <button style="margin-right:50px;border:1px solid;font-weight:700" id="btnContinue" class="btn">Chọn sản phẩm khác</button>
+    <button style="margin-right:50px;border:1px solid;font-weight:700" id="btnUpdate" class="btn">Cập nhật danh sách</button>
+    <button style="margin-right:50px;border:1px solid;font-weight:700" id="btnDeleteAll" class="btn">Xóa danh sách</button>
+    <input style=" height: 38px; padding: 0; font-size: 15px; width: 232px; padding-left: 20px;" type="tel" class="tel-number" placeholder="Nhập số điện thoại của bạn" /><button style="border: 1px solid;font-weight:700" id="btnLuu" class="btn">Đặt Hàng</button>
+   
+    <script>
+        var cart = {
+            init: function () {
+                cart.regEvents();
+            },
+            regEvents: function () {
+                $('#btnContinue').off('click').on('click', function () {
+                    window.location.href = "/trangchu/index";
+                });
+                $('#btnUpdate').off('click').on('click', function () {
+                    var listProduct = $('.txtquantity');
+                    var cartList = [];
+                    $.each(listProduct, function (i, item) {
+                        cartList.push({
+                            Quantity: $(item).val(),
+                            ProductID: {
+                                MAPT: $(item).data('id') 
+                            }
+                        });
+                    });
+                    $.ajax({
+                        url: '/cart/update',
+                        data: { cartModel: JSON.stringify(cartList) },
+                        dataType: 'json',
+                        type: 'POST',
+                        success: function (res) {
+                            if (res.status == true) {
+                                window.location.href = "/cart/index";
+                            }
+                        }
+                    });
+                });
+                $('#btnDeleteAll').off('click').on('click', function () {                    
+                    $.ajax({
+                        url: '/cart/deleteall',                        
+                        dataType: 'json',
+                        type: 'POST',
+                        success: function (res) {
+                            if (res.status == true) {
+                                window.location.href = "/cart/index";
+                            }
+                        }
+                    });
+                });
+                $('.btn-delete').off('click').on('click', function (e) {
+                    e.preventDefault()
+                    $.ajax({
+                        data: { id: $(this).data('id') },
+                        url: '/cart/delete',
+                        dataType: 'json',
+                        type: 'POST',
+                        success: function (res) {
+                            if (res.status == true) {
+                                window.location.href = "/cart/index";
+                            }
+                        }
+                    });
+                });
+                $('#btnLuu').off('click').on('click', function () {
+                    var mobile_check = /^[0-9]{10}$/;
+                    var telnumber_check = $('.tel-number').val();
+                    if (mobile_check.test(telnumber_check)) {
+                        if (confirm('Bạn có muốn tiếp tục lưu việc này sẽ xóa đi danh sách hiện tại')) {
+                            var telnumber = $('.tel-number').val();
+                        }
+                        else {
+
+                        }
+                       
+                    }
+                    else {
+                        alert('Số điện thoại của bạn không đúng định dạng')
+                    }
+                                                     
+                    $.ajax({
+                        url: '/cart/luudanhsach',
+                        data: { tel: telnumber },
+                        dataType: 'json',
+                        type: 'POST',
+                        success: function (res) {
+                            if (res.status == true) {
+                                window.location.href = "/cart/tinhtrang_donHang";
+                            }
+                        }
+                    });
+                });
+            }
+        }
+        cart.init();
+    </script>
+}
+else
+{
+    <span style="position:absolute" class="alert alert-danger">Bạn chưa có sản phẩm nào được chọn</span>
+}
+
+
+
+

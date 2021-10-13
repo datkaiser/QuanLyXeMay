@@ -1,0 +1,14 @@
+# QLPTXM| QUẢN LÝ PHỤ TÙNG XE MÁY
+
+Đồ án kết thúc môn CÔNG NGHỆ PHẦN MỀM
+### Sử dụng: 
+ -  VISUAL STUDIO 2012 ĐỂ CHẠY FORM, VISUAL STUDIO 2019 ĐỂ CHẠY WEB
+ -  Devexpress version 19.2.6.0 
+-----------------------------------------------
+Đầu tiên, chạy sql 
+CHẠY FORM BẰNG VS2012 CÓ SỬ DỤNG DEV
+ĐĂNG NHẬP
++NVQL  TK:0971343530   MK: 123 ( QUYỀN QUẢN LÝ )
++NVTN  TK:0975446122   MK: 123 ( QUYỀN THU NGÂN )
++NVK   TK:0985642356   MK: 123 ( QUYỀN KHO )
+CHẠY WEB VS2019

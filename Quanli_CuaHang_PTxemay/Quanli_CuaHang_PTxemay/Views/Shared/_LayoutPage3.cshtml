@@ -1,0 +1,172 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+    <link href="~/Assert/css/StyleSh.css" rel="stylesheet" />
+    <link href="~/Assert/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="~/Assert/bootstrap/js/jquery-3.3.1.min.js"></script>
+    <script src="~/Assert/bootstrap/js/bootstrap.min.js"></script>
+</head>
+<body>
+    <div class="container-fluid border bg">
+        <div class="row">
+            <div class="col-6"></div>
+            <div class="col-6 ">
+                <ul class="nav">
+                    <li class="nav-item">
+                        <a class="nav-link n-l" href="#">Trang chủ</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link n-l" href="#">Hướng dẫn</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link n-l" href="#">Tư vấn</a>
+                    </li>
+                   
+                    <li class="nav-item">
+                        <a class="nav-link n-l" href="@Url.Action("TinhTrang_DonHang","Cart")">Tình trạng đơn hàng</a>
+                    </li>
+                    <li class="nav-item" title="Sản phẩm đã chọn">
+                        <a class="nav-link n-l" href="@Url.Action("Index","Cart")"><i style=" margin-right: 5px;" class="fa fa-cart-arrow-down" aria-hidden="true"></i>Giỏ Hàng</a>
+                    </li>
+                    <li class="nav-item" title="Danh sách của bạn">
+                        <a class="nav-link n-l1" href="@Url.Action("HienthiDanhsachyeuthich","Cart")"><i style=" margin-right: 5px;" class="fa fa-check-square-o" aria-hidden="true"></i>Sản phẩm đã mua</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    @*----------------------------------------------------------*@
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-2">
+                <a href="@Url.Action("Index","Trangchu")"><img class="ima" style="cursor:pointer" src="~/Assert/Hinh_Anh_PTX_DA/logo-removebg-preview.png" /></a>
+            </div>
+
+            <div class="col-6 container">
+                @Html.Action("Search_box", "Trangchu")
+                <div class="hastag">
+                    <p>Tìm kiếm nhiều nhất:</p>
+                    <ul>
+                        <li><a href="#">Phuộc YSS</a></li>
+                        <li><a href="#">Bugi SovkoS</a></li>
+                        <li><a href="#">xịt sên GoRacing</a></li>
+                        <li><a href="#">phuộc racingboy </a></li>
+                        <li><a href="#">Led 2 tầng</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    @*----------------------------------------------------------*@
+    <div class="row">
+        <div class="col-md-2"></div>
+        @Html.Action("MenuDS_dropdown", "Home")
+        <div class="col-md-6" style="padding: 0;background-color: #f3e6e6"></div>
+    </div>
+    <div class="row" style="margin-top:5px">
+        <div class="col-md-2"></div>
+        <div class="col-md 8">
+            <div class="row">
+                <div class="col-md-7" style="padding:0">@RenderBody()</div>
+                <div class="col-md-5" style="padding:0">
+                    <div id="c3" style="width: 383px; margin-left: 20px;">
+                        <div class="location" style="padding-top: 2.5px;">
+                            <h2>PHỤ TÙNG & ĐỒ CHƠI XE MÁY</h2>
+                            <h3>Giờ làm việc: Từ 8g00 - 18g00 (Cả Thứ 7 & CN)</h3>
+                        </div>
+
+                        <ul class="locat-ul">
+                            <li style="font-size: 14px" class="locat-li">
+                                <span><i class="bi bi-geo-alt-fill"></i></span>
+                                <p><h6>C.Giuộc: </h6> 58/6 Nguyễn An Ninh, Cần Giuộc, L.An</p>
+                            </li>
+                            <li style="font-size: 14px" class="locat-li">
+                                <span><i class="bi bi-geo-alt-fill"></i></span>
+                                <p> <h6>Q.Bình Tân: </h6> 621 Tỉnh Lộ 10, HCM</p>
+                            </li>
+                            <li style="font-size: 14px" class="locat-li">
+                                <span><i class="bi bi-geo-alt-fill"></i></span>
+                                <p><h6>Tiền Giang: </h6> 313 Đồng Khởi, P.Tân Mai</p>
+                            </li>
+                            <li style="font-size: 14px" class="locat-li">
+                                <span><i class="bi bi-geo-alt-fill"></i></span>
+                                <p> <h6>Q.Thủ Đức: </h6> 1007 Kha Vạn Cân, P.Linh Tây, HCM</p>
+                            </li>
+                            <li style="font-size: 14px" class="locat-li">
+                                <span><i class="bi bi-geo-alt-fill"></i></span>
+                                <p> <h6>Q.Tân Bình: </h6> 457 Hoàng Văn Thụ, P.4, HCM</p>
+                            </li>
+                            <li class="locat-li"><p class="hotline">Hotline: 0971343530 - 0934090714</p></li>
+                        </ul>
+                        <p style="margin:0;border-bottom:5px solid #ff6a00; width:50%;text-transform:uppercase">Quan tâm nhiều</p>
+                        @Html.Action("Danhsach_PT","Trangchu")
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-2"></div>
+    </div>
+
+    @*----------------------------------------------------------*@
+    <div class="row" style="margin-top: 32px; background: #e2dbdb;">
+        <div class="col-md-3">
+            <h4 class="title"></h4>
+        </div>
+        <div class="col-md-3">
+            <h4 class="title">Hỗ trợ khách hàng</h4>
+            <ul class="footer">
+                <li class="footer-item">Hướng dẫn mua hàng</li>
+                <li class="footer-item">Phương thức vận chuyển</li>
+                <li class="footer-item">Phương thức thanh toán</li>
+                <li class="footer-item">Chính sách bảo mật</li>
+                <li class="footer-item">Điều khoản sử dụng</li>
+                <li class="footer-item">Chính sách bảo hành</li>
+            </ul>
+        </div>
+        <div class="col-md-3">
+            <h4 class="title">Giới thiệu</h4>
+            <ul class="footer">
+                <li class="footer-item">Hợp tác - Góp ý: 0938.82.02.02 </li>
+                <li class="footer-item">Phụ kiện giá rẻ</li>
+                <li class="footer-item">Đồ chơi xe máy mới nhất</li>
+                <li class="footer-item">Đồ chơi xe Vision</li>
+                <li class="footer-item">Đồ chơi Vario</li>
+                <li class="footer-item">Đồ chơi xe Click Thái</li>
+                <li class="footer-item">Đồ chơi xe SH Mode</li>
+                <li class="footer-item">Vỏ xe Exciter</li>
+                <li class="footer-item">Vỏ xe Winner</li>
+            </ul>
+        </div>
+        <div class="col-md-3">
+            <h4 class="title">Sản phẩm nổi bật</h4>
+            <ul class="footer">
+                <li class="footer-item">Đồ chơi Exciter 155</li>
+                <li class="footer-item">Đồ chơi Exciter 150</li>
+                <li class="footer-item">Đồ chơi xe SH</li>
+                <li class="footer-item">Đồ chơi xe NVX</li>
+                <li class="footer-item">Đồ chơi Air Blade</li>
+                <li class="footer-item">Đồ chơi Winner X</li>
+                <li class="footer-item">Đồ chơi xe Sirius</li>
+                <li class="footer-item">Phụ tùng xe máy Honda</li>
+                <li class="footer-item">Phụ tùng xe máy Yamaha</li>
+                <li class="footer-item">Phụ tùng xe máy Suzuki</li>
+                <li class="footer-item">Phụ tùng xe máy Piaggio</li>
+            </ul>
+        </div>
+    </div>
+    @*----------------------------------------------------------*@
+    <div style="height: 38px; background: #585555;">
+        <p style=" padding-top: 8px; color: white; font-size: 13px; margin-left: 268px;">Design by PPANND Store </p>
+    </div>
+
+</body>
+</html>

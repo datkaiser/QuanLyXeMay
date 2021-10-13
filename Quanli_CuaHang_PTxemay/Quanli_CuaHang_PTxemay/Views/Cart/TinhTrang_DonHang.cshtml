@@ -1,0 +1,114 @@
+﻿@using Quanli_CuaHang_PTxemay.Models;
+
+@{
+    ViewBag.Title = "TinhTrang_DonHang";
+    Layout = "~/Views/Shared/_LayoutPage4.cshtml";
+}
+@if (ViewBag.kh == null)
+{
+    <div style="margin-top:10px;color: #d42a2a;">
+        <h5><i style="margin-right: 10px;" class="fa fa-bullhorn" aria-hidden="true"></i>Hãy nhập số điện thoại của bạn</h5>
+        <input style=" height: 38px; padding: 0; font-size: 15px; width: 232px; padding-left: 20px;" type="tel" id="tel-number" placeholder="Nhập số điện thoại của bạn" />
+        <button style="border: 1px solid;font-weight:700" id="btnGui" class="btn">Tìm kiếm</button>
+    </div>
+}
+else
+{
+    if (ViewBag.dshd.Count > 0)
+    {
+        <table class="table">
+            <thead>
+                <tr>
+                    <td>Mã HD</td>
+                    <td>Số điện thoại</td>
+                    <td>Ngày Bán</td>
+                    <td>Tổng Tiền</td>
+                    <td>Tình trạng</td>
+                    <td></td>
+                    <td></td>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in ViewBag.dshd)
+                {
+                <tr>
+                    <td>@item.MAHD</td>
+                    <td>@item.SDT</td>
+                    <td>@item.NGAYBAN</td>
+
+                    <td>@String.Format("{0:#,##}", Convert.ToInt32(item.TONGTIEN))đ</td>
+                    @if (item.Tinhtrang == false)
+                    {
+                        <td>Đang duyệt đơn hàng</td>
+                        <td><a style="margin-top: -8px;" href="@Url.Action("ChitietDonHang", "Cart", new { idHD = item.MAHD })" class="btn btnXemchitiet">Xem chi tiết</a></td>
+                        <td><button style="margin-top: -8px;" data-id="@item.MAHD" class="btn btnXoaDonHang">Xóa Đơn Hàng</button></td>
+                    }
+                    else
+                    {
+                        <td><i style="margin-right:10px;" class="fa fa-bicycle" aria-hidden="true"></i>Đang giao Hàng</td>
+                        <td><a style="margin-top: -8px;" href="@Url.Action("ChitietDonHang", "Cart", new { idHD = item.MAHD })" class="btn btnXemchitiet">Xem chi tiết</a></td>
+                    }
+
+
+                </tr>
+                }
+            </tbody>
+        </table>
+
+    }
+    else
+    {
+        <span style="position:absolute" class="alert alert-danger">Bạn chưa có hóa đơn nào !</span>
+    }
+}
+<script>
+    var cart = {
+        init: function () {
+            cart.regEvents();
+        },
+        regEvents: function () {
+            $('.btnXoaDonHang').off('click').on('click', function (e) {
+                $.ajax({
+                    data: { idHD: $(this).data('id') },
+                    url: '/cart/delete_giohang',
+                    dataType: 'json',
+                    type: 'POST',
+                    success: function (res) {
+                        if (res.status == true) {
+                            window.location.href = "/cart/tinhtrang_donHang";
+                        }
+                    }
+                });
+            });
+            $('#btnGui').off('click').on('click', function () {
+                var mobile_check = /^[0-9]{10}$/;
+                var telnumber_check = $('#tel-number').val();
+                if (mobile_check.test(telnumber_check)) {
+                    var telnumber = $('#tel-number').val();
+                }
+                else {
+                    alert('Số điện thoại của bạn không đúng định dạng')
+                }
+
+                $.ajax({
+                    url: '/cart/hienthidanhsachyeuthich',
+                    data: { tel: telnumber },
+                    dataType: 'json',
+                    type: 'POST',
+                    success: function (res) {
+                        if (res.status == true) {
+                            window.location.href = "/cart/tinhtrang_donhang";
+                        }
+                        else {
+                            alert("Số điện thoại của bạn chưa có trong hệ thống");
+                            window.location.href = "/cart/tinhtrang_donhang";
+                        }
+                    }
+                });
+            });
+
+        }
+    }
+    cart.init();
+</script>
+

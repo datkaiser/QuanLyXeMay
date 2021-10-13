@@ -1,0 +1,107 @@
+﻿@using Quanli_CuaHang_PTxemay.Models;
+
+@{
+    ViewBag.Title = "HienthiDanhsachyeuthich";
+    Layout = "~/Views/Shared/_LayoutPage4.cshtml";
+}
+@if (ViewBag.kh == null)
+{
+    <div style="margin-top:10px;color: #d42a2a;">
+        <h5><i style="margin-right: 10px;" class="fa fa-bullhorn" aria-hidden="true"></i>Hãy nhập số điện thoại của bạn</h5>
+        <input style=" height: 38px; padding: 0; font-size: 15px; width: 232px; padding-left: 20px;" type="tel" id="tel-number" placeholder="Nhập số điện thoại của bạn" />
+        <button style="border: 1px solid;font-weight:700" id="btnGui" class="btn">Tìm kiếm</button>
+    </div>
+}
+else
+{
+
+    if (ViewBag.danhsach == null)
+    {
+        <p class="alert alert-danger">Bạn chưa có sản phẩm yêu thích </p>
+    }
+    else
+    {
+
+        <table class="table">
+            <thead>
+                <tr>
+                    <td>Mã</td>
+                    <td style="width:200px;">Tên Sản Phẩm</td>
+                    <td>Hình ảnh</td>
+                    <td>Đơn vị tính</td>
+                    <td>Giá Bán</td>
+                    <td></td>
+                    <td></td>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (PHUTUNGXE item in ViewBag.danhsach)
+                {
+                <tr>
+                    <td>@item.MAPT</td>
+                    <td>@item.TENPT</td>
+                    <td><img style="width:100px;" src="~/Assert/Hinh_Anh_PTX_DA/@item.HINH"/></td>
+                    <td>@item.DVT</td>
+                    <td>@item.GIABAN</td>
+                    <td><a style=" margin-top: -7px;" href="@Url.Action("ChitietSp","Sanpham", new {masp = item.MAPT})" class="btn btn-primary">Xem chi tiết</a></td>
+                    <td><span><a href="#" data-id="@item.MAPT" class="btn-delete"><i style="color:red;" class="fa fa-trash" aria-hidden="true"></i></a></span></td>
+                </tr>
+                
+            }
+
+
+                </tbody>
+            </table>
+
+        }
+    }
+<script>
+    var cart = {
+        init: function () {
+            cart.regEvents();
+        },
+        regEvents: function () {
+            $('#btnGui').off('click').on('click', function () {
+                var mobile_check = /^[0-9]{10}$/;
+                var telnumber_check = $('#tel-number').val();
+                if (mobile_check.test(telnumber_check)) {
+                    var telnumber = $('#tel-number').val();
+                }
+                else {
+                    alert('Số điện thoại của bạn không đúng định dạng')
+                }
+
+                $.ajax({
+                    url: '/cart/hienthidanhsachyeuthich',
+                    data: { tel: telnumber },
+                    dataType: 'json',
+                    type: 'POST',
+                    success: function (res) {
+                        if (res.status == true) {
+                            window.location.href = "/cart/hienthidanhsachyeuthich";
+                        }
+                        else {
+                            alert("Số điện thoại của bạn chưa có trong hệ thống");
+                            window.location.href = "/cart/hienthidanhsachyeuthich";
+                        }
+                    }
+                });
+            });
+            $('.btn-delete').off('click').on('click', function (e) {
+                e.preventDefault()
+                $.ajax({
+                    data: { id: $(this).data('id') },
+                    url: '/cart/delete_favorite_list_item',
+                    dataType: 'json',
+                    type: 'POST',
+                    success: function (res) {
+                        if (res.status == true) {
+                            window.location.href = "/cart/hienthidanhsachyeuthich";
+                        }
+                    }
+                });
+            });
+        }
+    }
+    cart.init();
+</script>
